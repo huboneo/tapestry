@@ -1,12 +1,11 @@
-import Num from '../primitive/num/num.monad';
-import Monad from '../monad';
-import Str from '../primitive/str.monad';
-import Dict from '../primitive/dict.monad';
+import {Monad, Str, Dict} from '@relate/types';
+
+import CypherNum from '../cypher-num/cypher-num.monad';
 
 export interface RawRelationship {
-    identity: Num;
-    start: Num;
-    end: Num;
+    identity: CypherNum;
+    start: CypherNum;
+    end: CypherNum;
     type: Str;
     properties: Dict;
 }
@@ -49,9 +48,9 @@ export default class Relationship extends Monad<RawRelationship> {
     static of(val: any): Relationship {
         // @todo: improve typechecks
         const sane: RawRelationship = {
-            identity: Num.fromValue(val.identity),
-            start: Num.fromValue(val.start),
-            end: Num.fromValue(val.end),
+            identity: CypherNum.fromValue(val.identity),
+            start: CypherNum.fromValue(val.start),
+            end: CypherNum.fromValue(val.end),
             type: Str.from(val.type),
             properties: Dict.from(val.properties)
         };

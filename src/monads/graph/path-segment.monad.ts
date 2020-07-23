@@ -1,4 +1,4 @@
-import Monad from '../monad';
+import {Monad} from '@relate/types';
 import NodeMonad from './node.monad';
 import Relationship from './relationship.monad';
 
